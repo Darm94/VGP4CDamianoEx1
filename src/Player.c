@@ -1,5 +1,6 @@
 #include "Player.h"
-
+#define PLAYER_RADIUS 10.0f
+#define PLAYER_SPEED 125
 
 player_t* Player_Factory(moveMode_t moveMode,Color color)
 {
@@ -8,8 +9,17 @@ player_t* Player_Factory(moveMode_t moveMode,Color color)
     player->position = (Vector2){100,100};
     player->PlayerColor = color;
     player->direction = (Vector2){0, 0};
-    player->radius = 10.0f;
-    player->speed = 5.0f;
+    player->radius = PLAYER_RADIUS;
+    player->speed = PLAYER_SPEED;
+
+    switch(moveMode) {
+        case KEYBOARD1:
+            player->moveFunc = UpdateMoveByInput;
+            break;
+        case RANDOM:
+            player->moveFunc = UpdateMoveByRand;
+            break;
+    }
 
     return player;
 }
@@ -19,17 +29,10 @@ void DrawPlayer(player_t* player)
     DrawCircle(player->position.x, player->position.y, player->radius, player->PlayerColor);
 }
 
-void UpdatePlayer(player_t* player){
-    switch (player->moveMode) {
-        case KEYBOARD1:
-            UpdateMoveByInput(player);
-            break;
-        case RANDOM:
-            UpdateMoveByRand(player);
-            break;
-    }
-    player->position.x += player->direction.x * player->speed;
-    player->position.y += player->direction.y * player->speed;
+void UpdatePlayer(player_t* player,float dt){
+    player->moveFunc(player);
+    player->position.x += player->direction.x*player->speed*dt;
+    player->position.y += player->direction.y*player->speed*dt;
 }
 
 void UpdateMoveByInput(player_t* player){

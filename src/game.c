@@ -17,8 +17,8 @@ void GameUpdate(game_t *game, float dt)
 {
         //UpdateMoveByInput(game->player);
         //UpdateMoveByRand(playerAI);
-        UpdatePlayer(game->player);
-        UpdatePlayer(playerAI);        
+        UpdatePlayer(game->player,dt);
+        UpdatePlayer(playerAI,dt);        
 }
 
 void GameDraw(const game_t *game)

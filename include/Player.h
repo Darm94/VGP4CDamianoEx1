@@ -21,6 +21,8 @@ typedef struct player_t
     float radius;
     float speed;
     moveMode_t moveMode;
+    void (*moveFunc)(struct player_t*);
+
 }player_t;
 
 player_t* Player_Factory(moveMode_t moveMode,Color color);
@@ -29,6 +31,6 @@ void UpdateMoveByInput(player_t* player);
 void UpdateMoveByRand(player_t* player);
 void DrawPlayer(player_t* player);
 
-void UpdatePlayer(player_t* player);
+void UpdatePlayer(player_t* player,float dt);
 
 #endif// PLAYER_H
