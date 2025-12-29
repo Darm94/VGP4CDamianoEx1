@@ -81,12 +81,12 @@ Example output:
 ### 5. Output Readability Improvements
 To improve clarity and debugging:
 - floating-point values are formatted with a fixed number of decimals
-- values are aligned using formatted output (`%.2f`, `%.2f`)
-- unnecessary per-frame debug prints were removed
+- values are formatted in two digit format with the output (`%.2f`, `%.2f`)
+- unnecessary per-frame/time debug prints were removed
 
 ---
 
-## Notes
-- The networking protocol is intentionally simple to make debugging easier
+## Notes:
+- The networking protocol implementation is intentionally simple to make debugging easier
 - The system is designed as a foundation for future graphical synchronization of remote players
-- All communication is performed using UDP for low-latency updates
+- All communication is performed using UDP 
