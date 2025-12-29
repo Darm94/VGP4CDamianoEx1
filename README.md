@@ -74,14 +74,14 @@ When a `UDP:id,x,y` message is received, the client:
 
 Example output:
 ```
-[PLAYER 2] x = 120.50 y = 340.00
+[PLAYER n. 2] x = 123.50 y = 339.19
 ```
 ---
 
 ### 5. Output Readability Improvements
 To improve clarity and debugging:
 - floating-point values are formatted with a fixed number of decimals
-- values are aligned using formatted output (`%.2f`, `%7.2f`)
+- values are aligned using formatted output (`%.2f`, `%.2f`)
 - unnecessary per-frame debug prints were removed
 
 ---
