@@ -3,6 +3,7 @@
 
 #include "raylib.h"
 #include "Player.h"
+#include "network.h"
 
 typedef struct game {
     player_t* player;
@@ -12,7 +13,7 @@ typedef struct game {
 } game_t;
 
 void GameInit(game_t *game);
-void GameUpdate(game_t *game, float dt);
+void GameUpdate(game_t *game, float dt,networkingData* nData);
 void GameDraw(const game_t *game);
 
 #endif // GAME_H
